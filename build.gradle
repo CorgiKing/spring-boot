@@ -1,12 +1,28 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'war'
 
-sourceCompatibility = 1.5
+tasks.withType(JavaCompile) {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    options.encoding = 'utf-8'
+}
 version = '1.0'
-jar {
+
+war {
+    baseName = "spring-boot"
     manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
-                   'Implementation-Version': version
+        attributes	'Title': 'Spring Boot',
+        			'provider':'Corgi King',
+                  	'Version': version
+    }
+}
+jar {
+    baseName = "spring-boot"
+    manifest {
+        attributes	'Title': 'Spring Boot',
+        			'provider':'Corgi King',
+                  	'Version': version
     }
 }
 
@@ -15,18 +31,35 @@ repositories {
 }
 
 dependencies {
-    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     testCompile group: 'junit', name: 'junit', version: '4.+'
+    
+    compile (
+    	[group: 'commons-collections', name: 'commons-collections', version: '3.2'],
+    	
+    	[group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.7.RELEASE'],
+    	
+    	[group: 'org.reflections', name: 'reflections', version: '0.9.11']
+    	
+    	)
 }
+
+ext {
+    environment = System.getProperty("env")
+
+    if (environment == null) {
+    	environment = "dev"
+    }
+}
+//gradle clean war -Denv=dev
 
 test {
     systemProperties 'property': 'value'
 }
 
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/resources", "src/main/environment/$environment"]
+        }
     }
 }
