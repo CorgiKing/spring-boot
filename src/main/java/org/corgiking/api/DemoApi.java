@@ -2,7 +2,6 @@ package org.corgiking.api;
 
 import org.corgiking.aop.aspectj.Encoreable;
 import org.corgiking.aop.aspectj.Performance;
-import org.corgiking.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/demo")
 public class DemoApi {
 	
-	@Autowired
-	private DemoService demoService;
 	@Autowired
 	//这个一定要是接口,spring默认aop是基于接口的
 	private Performance performService;
