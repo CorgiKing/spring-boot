@@ -2,6 +2,7 @@ package org.corgiking.api;
 
 import org.corgiking.aop.aspectj.Encoreable;
 import org.corgiking.aop.aspectj.Performance;
+import org.corgiking.dao.TestDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,9 @@ public class DemoApi {
 	@Autowired
 	//这个一定要是接口,spring默认aop是基于接口的
 	private Performance performService;
+	
+	@Autowired
+	private TestDao testDao;
 	
 	@GetMapping("/hello")
 	public String hello(){
@@ -37,6 +41,11 @@ public class DemoApi {
 		Encoreable encoreable = (Encoreable)performService;
 		encoreable.performEncore();
 		return "aop";
+	}
+	
+	@GetMapping("/dao")
+	public Integer dao(){
+		return testDao.countUserNum();
 	}
 	
 }
