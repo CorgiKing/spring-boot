@@ -38,9 +38,10 @@ dependencies {
     	
     	//spring-boot
     	[group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.7.RELEASE'],
+    	[group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.7.RELEASE'],
     	
     	//对java反射的加强
-    	//[group: 'org.reflections', name: 'reflections', version: '0.9.11'],
+    	[group: 'org.reflections', name: 'reflections', version: '0.9.11'],
     	
     	//面向切面AspectJ
     	[group: 'org.aspectj', name: 'aspectjweaver', version: '1.8.10'],
