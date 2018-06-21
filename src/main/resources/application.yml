@@ -31,9 +31,12 @@ logging.level.org.corgiking.dao: debug
 
 # 读取配置文件测试数据
 test.prop:
+  # 字符串
   str: I am string.
+  # 数组、列表
   strArray: string1,string2
   strList: string3,string4
+  # map
   strMap: 
     key1: value1
     key2: value2
