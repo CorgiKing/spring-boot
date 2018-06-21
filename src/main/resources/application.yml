@@ -28,3 +28,29 @@ spring.datasource.druid:
 mybatis.mapperLocations: classpath:mappers/*.xml
 # 打印执行的sql语句
 logging.level.org.corgiking.dao: debug
+
+# 读取配置文件测试数据
+test.prop:
+  str: I am string.
+  strArray: string1,string2
+  strList: string3,string4
+  strMap: 
+    key1: value1
+    key2: value2
+  authors:
+    - name: corgiking
+      sex: 男
+      age: 25
+    - name: goaler
+      sex: 男
+      age: 25
+  innerProp:
+    str: I am string.
+    strArray: string5,string6
+    strList: string7,string8
+    strMap: 
+      key3: value3
+      key4: value4
+  
+    
+    
